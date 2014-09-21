@@ -1,7 +1,10 @@
 package me.CaptainElliott.Parser;
 
 import me.CaptainElliott.Parser.Modules.Name;
+import me.CaptainElliott.Parser.Modules.Objective;
+import me.CaptainElliott.Parser.Modules.Teams;
 import me.CaptainElliott.Parser.Modules.Version;
+import org.bukkit.Bukkit;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Text;
@@ -34,6 +37,24 @@ public class Generate extends Parser{
                 if(Version.isVersionset()){
                     Version.ElVersion.addContent(new Text(Version.getVersion()));
                     root.addContent(Version.ElVersion);
+                }
+                if(Objective.isObjectiveset()){
+                    Objective.ElObjective.addContent(new Text(Objective.getObjective()));
+                    root.addContent(Objective.ElObjective);
+                }
+                if(Teams.isTeamsset()){
+                    Element teams = new Element("teams");
+                    root.addContent(teams);
+                    for(int i = 0;Teams.getNumberOfTeams() > i; i++){
+                        Bukkit.broadcastMessage("Does it get here?");
+                        Element team = new Element("team");
+                        String name = Teams.name.get(i+1);
+                        team.addContent(Teams.name.get(i+1));
+                        team.setAttribute("color", Teams.color.get(name));
+                        team.setAttribute("max", Teams.max.get(name));
+                        team.setAttribute("max-ovefill", Teams.maxoverfill.get(name));
+                        teams.addContent(team);
+                    }
                 }
 
                 Parser.getXmldoc().createNewFile();

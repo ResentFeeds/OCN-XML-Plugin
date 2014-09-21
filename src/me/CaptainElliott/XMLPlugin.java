@@ -4,6 +4,7 @@ package me.CaptainElliott;
 import com.sk89q.bukkit.util.CommandsManagerRegistration;
 import com.sk89q.minecraft.util.commands.*;
 import me.CaptainElliott.Commands.Modules;
+import me.CaptainElliott.Commands.ModulesAdd;
 import me.CaptainElliott.Commands.ModulesGet;
 import me.CaptainElliott.Commands.ParentCommand;
 import org.bukkit.ChatColor;
@@ -38,6 +39,7 @@ public class XMLPlugin extends JavaPlugin{
         cmdRegister.register(ParentCommand.class);
         cmdRegister.register(Modules.class);
         cmdRegister.register(ModulesGet.class);
+        cmdRegister.register(ModulesAdd.class);
 
 	}
 	
