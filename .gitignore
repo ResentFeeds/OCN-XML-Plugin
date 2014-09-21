@@ -1,4 +1,6 @@
 *.class
+target/*
+*.iml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -15,8 +17,8 @@ hs_err_pid*
 *.iml
 *.ipr
 *.iws
-.idea/
+.idea/*
 
 # Eclipse
-.settings/
+.settings/*
 *.classpath
