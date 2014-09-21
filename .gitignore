@@ -1,0 +1,20 @@
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Java
+bin
+
+# Maven
+target/
+
+# Mac crap
+.DS_Store
+
+# misc
+.project
+.classpath
+.settings
+*.class
