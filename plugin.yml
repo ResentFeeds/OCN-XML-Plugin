@@ -1,0 +1,5 @@
+name: XMLPlugin
+main: me.CaptainElliott.XMLPlugin
+version: 0.0.1
+author: Captain_Elliott
+depend: [WorldEdit]

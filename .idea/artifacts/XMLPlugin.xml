@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="XMLPlugin">
+    <output-path>$PROJECT_DIR$/../../Bukkit Test Server/plugins</output-path>
+    <root id="archive" name="XMLPlugin.jar">
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+      <element id="module-output" name="XMLPlugin" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../APIs &amp; Libs/jdom-2.0.5/jdom-2.0.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../APIs &amp; Libs/commons-lang3-3.3.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
