@@ -4,6 +4,7 @@ import com.sk89q.minecraft.util.commands.Command;
 import com.sk89q.minecraft.util.commands.CommandContext;
 import com.sk89q.minecraft.util.commands.CommandException;
 import me.CaptainElliott.Parser.Modules.Teams;
+import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -25,7 +26,7 @@ public class ModulesAdd {
         Player player = (Player) sender;
         if (!Commands.getInit())
             player.sendMessage(ChatColor.RED + "You have not yet initialized! (/xml init)");
-        else {
+        else if(NumberUtils.isNumber(args.getString(2)) && NumberUtils.isNumber(args.getString(3))){
             TeamCalledTimes++;
             String name = args.getString(0);
             Bukkit.broadcastMessage(ChatColor.GOLD + name);
@@ -37,6 +38,8 @@ public class ModulesAdd {
             Teams.setTeamsset(true);
             Teams.setNumberOfTeams(Teams.getNumberOfTeams() + 1);
 
+        } else {
+            player.sendMessage(ChatColor.RED + "The team max sizes must be integers!");
         }
     }
 }

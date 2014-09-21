@@ -18,10 +18,14 @@ public class Commands extends Modules{
 	 @Command(aliases = { "init", "initialize" }, desc = "Initializes the XML creation process", usage = "xml init", min = 0, max = 0)
 	  public static void init(final CommandContext args, CommandSender sender) throws CommandException {
 		 Player player = (Player) sender;
-		 player.sendMessage(ChatColor.GOLD + "You have initializes the process the generated the XML for your map!");
-		 player.sendMessage(ChatColor.GREEN + "Type /xml modules for a list of commands to run!");
-		 player.sendMessage(ChatColor.RED + "Or type /xml stop to exit out");
-		 setInit(true);
+         if(!getInit()) {
+             player.sendMessage(ChatColor.GOLD + "You have initializes the process the generated the XML for your map!");
+             player.sendMessage(ChatColor.GREEN + "Type /xml modules for a list of commands to run!");
+             player.sendMessage(ChatColor.RED + "Or type /xml stop to exit out");
+             setInit(true);
+         } else {
+             player.sendMessage("You are already initialized the xml process, use /xml stop to abort!");
+         }
 
 	  }
 	 @Command(aliases = { "stop", "exit" }, desc = "stop the XML creation process", usage = "xml stop", min = 0, max = 0)
@@ -40,23 +44,17 @@ public class Commands extends Modules{
     @Command(aliases = { "modules" }, desc = "list of the XML modules", usage = "xml modules", min = 0, max = 0)
     public static void modules(final CommandContext args, CommandSender sender) throws CommandException {
         Player player = (Player) sender;
-        if(getInit()){
             player.sendMessage(ChatColor.AQUA + "--- List Currently Supported XML Modules ---");
             player.sendMessage(ChatColor.RED + "NAME" + ChatColor.AQUA + " - " + ChatColor.YELLOW + "Sets the name for the map");
             player.sendMessage(ChatColor.RED + "VERSION" + ChatColor.AQUA + " - " + ChatColor.YELLOW + "Sets the map version");
             player.sendMessage(ChatColor.RED + "OBJECTIVE" + ChatColor.AQUA + " - " + ChatColor.YELLOW + "Sets the map objective");
             player.sendMessage(ChatColor.RED + "TEAMS" + ChatColor.AQUA + " - " + ChatColor.YELLOW + "Adds teams");
             player.sendMessage(ChatColor.AQUA + "----------------" + ChatColor.RED + "/xml commads" + ChatColor.AQUA + "----------------");
-
-        } else {
-            player.sendMessage(ChatColor.RED + "You have not yet initialized! (/xml init)");
-        }
     }
 
     @Command(aliases = { "commands" }, desc = "list of the XML commands", usage = "xml commands", min = 0, max = 0)
     public static void commands(final CommandContext args, CommandSender sender) throws CommandException {
         Player player = (Player) sender;
-        if(getInit()){
             player.sendMessage(ChatColor.AQUA + "--- List Currently Supported XML Modules ---");
             player.sendMessage(ChatColor.RED + "Set Map Name" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml set name");
             player.sendMessage(ChatColor.RED + "Get Map Name" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml get name");
@@ -66,11 +64,6 @@ public class Commands extends Modules{
             player.sendMessage(ChatColor.RED + "Get Map Objective" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml get objective");
             player.sendMessage(ChatColor.RED + "Add a Team" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml add team <name, color, max, max-overfill>");
             player.sendMessage(ChatColor.RED + "List Teams" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml get teams");
-
-
-        } else {
-            player.sendMessage(ChatColor.RED + "You have not yet initialized! (/xml init)");
-        }
     }
 
     @Command(aliases = { "generate" }, desc = "generates the XML file", usage = "xml generate", min = 0, max = 0)
