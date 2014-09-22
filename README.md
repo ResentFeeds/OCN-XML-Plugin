@@ -16,7 +16,7 @@ So far you can generate an xml file with the following modules
 
 Commands
 ========
--`/xml ini` - start the xml creation process
+-`/xml init` - start the xml creation process
 -`/xml stop` - stops the xml creation process
 -`/xml generate` - generates the xml file into your plugins folder (soon will upload to pastebin)
 - `/xml name set <name>` - sets the name of the map
