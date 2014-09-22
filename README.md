@@ -12,6 +12,13 @@ So far you can generate an xml file with the following modules
 - Version
 - Objective
 - Teams
+- 
+Modules that are WIP and when completed a beta version will be released
+=======================================================================
+
+- Kits
+- Spawns
+- Gamemodes
 
 
 Commands
