@@ -27,9 +27,9 @@ public class Teams {
     }
 
     public static HashMap<Integer, String> name = new HashMap<Integer, String>();
-    public static HashMap<String, String> max = new HashMap<String, String>();
-    public static HashMap<String, String> maxoverfill = new HashMap<String, String>();
-    public static HashMap<String, String> color = new HashMap<String, String>();
+    public static HashMap<Integer, String> max = new HashMap<Integer, String>();
+    public static HashMap<Integer, String> maxoverfill = new HashMap<Integer, String>();
+    public static HashMap<Integer, String> color = new HashMap<Integer, String>();
 
     public static void ResetHashMaps(){
         name.clear();
@@ -38,6 +38,22 @@ public class Teams {
         color.clear();
     }
 
+    public static void ReplaceNameValue(Integer ID, String new_name){
+        name.replace(ID, new_name);
+    }
+
+    public static void ReplaceMaxValue(Integer ID, String new_max){
+        max.replace(ID, new_max);
+
+    }
+
+    public static void ReplaceMaxOverfillValue(Integer ID, String new_max){
+        maxoverfill.replace(ID, new_max);
+    }
+
+    public static void ReplaceColorValue(Integer ID, String new_color){
+        color.replace(ID, new_color);
+    }
 
 
 }

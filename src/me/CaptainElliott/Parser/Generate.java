@@ -50,9 +50,9 @@ public class Generate extends Parser{
                         Element team = new Element("team");
                         String name = Teams.name.get(i+1);
                         team.addContent(Teams.name.get(i+1));
-                        team.setAttribute("color", Teams.color.get(name));
-                        team.setAttribute("max", Teams.max.get(name));
-                        team.setAttribute("max-ovefill", Teams.maxoverfill.get(name));
+                        team.setAttribute("color", Teams.color.get(i+1));
+                        team.setAttribute("max", Teams.max.get(i+1));
+                        team.setAttribute("max-ovefill", Teams.maxoverfill.get(i+1));
                         teams.addContent(team);
                     }
                 }

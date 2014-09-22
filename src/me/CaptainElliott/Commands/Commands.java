@@ -4,6 +4,7 @@ import com.sk89q.minecraft.util.commands.Command;
 import com.sk89q.minecraft.util.commands.CommandContext;
 import com.sk89q.minecraft.util.commands.CommandException;
 import com.sk89q.minecraft.util.commands.NestedCommand;
+import me.CaptainElliott.Commands.Modules.ModuleUtils;
 import me.CaptainElliott.Parser.Generate;
 import me.CaptainElliott.Parser.Modules.Name;
 import org.bukkit.ChatColor;
@@ -11,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 
-public class Commands extends Modules{
+public class Commands {
 	
 	private static boolean init = false;
 
@@ -36,7 +37,7 @@ public class Commands extends Modules{
 		 } else {
 		 player.sendMessage(ChatColor.RED + "XML creation aborted!");
              setInit(false);
-             Modules.ResetModules();
+             ModuleUtils.ResetModules();
 
 		 }
 	  }
@@ -56,14 +57,14 @@ public class Commands extends Modules{
     public static void commands(final CommandContext args, CommandSender sender) throws CommandException {
         Player player = (Player) sender;
             player.sendMessage(ChatColor.AQUA + "--- List Currently Supported XML Modules ---");
-            player.sendMessage(ChatColor.RED + "Set Map Name" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml set name");
-            player.sendMessage(ChatColor.RED + "Get Map Name" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml get name");
-            player.sendMessage(ChatColor.RED + "set Map Version" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml set version");
-            player.sendMessage(ChatColor.RED + "Get Map Version" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml get version");
-            player.sendMessage(ChatColor.RED + "set Map Objective" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml set objective");
-            player.sendMessage(ChatColor.RED + "Get Map Objective" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml get objective");
-            player.sendMessage(ChatColor.RED + "Add a Team" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml add team <name, color, max, max-overfill>");
-            player.sendMessage(ChatColor.RED + "List Teams" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml get teams");
+            player.sendMessage(ChatColor.RED + "Set Map Name" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml name set");
+            player.sendMessage(ChatColor.RED + "Get Map Name" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml name get");
+            player.sendMessage(ChatColor.RED + "set Map Version" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml version set");
+            player.sendMessage(ChatColor.RED + "Get Map Version" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml version get");
+            player.sendMessage(ChatColor.RED + "set Map Objective" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml objective set");
+            player.sendMessage(ChatColor.RED + "Get Map Objective" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml objective get");
+            player.sendMessage(ChatColor.RED + "Add a Team" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml teams add <name, color, max, max-overfill> to make spaces use _ in the team name");
+            player.sendMessage(ChatColor.RED + "List Teams" + ChatColor.AQUA + " - " + ChatColor.AQUA + "/xml teams get");
     }
 
     @Command(aliases = { "generate" }, desc = "generates the XML file", usage = "xml generate", min = 0, max = 0)
@@ -81,32 +82,38 @@ public class Commands extends Modules{
         }
     }
 
-    @Command(aliases = { "set" }, desc = "Set XML Moduel value", min = 0, max = -1)
-    @NestedCommand(Modules.class)// All commands will get passed on to Commands.class
-    public static void set(final CommandContext args, CommandSender sender) throws CommandException {
+    @Command(aliases = { "name" }, desc = "commands for the name module", min = 0, max = -1)
+    @NestedCommand(me.CaptainElliott.Commands.Modules.Name.class)// All commands will get passed on to Commands.class
+    public static void name(final CommandContext args, CommandSender sender) throws CommandException {
         Player player = (Player) sender;
         if(!getInit())
             player.sendMessage(ChatColor.RED + "You have not yet initialized! (/xml init)");
     }
 
-    @Command(aliases = { "get" }, desc = "get XML Moduel values", min = 0, max = -1)
-    @NestedCommand(ModulesGet.class)// All commands will get passed on to Commands.class
-    public static void get(final CommandContext args, CommandSender sender) throws CommandException {
+    @Command(aliases = { "version" }, desc = "commands for the version module", min = 0, max = -1)
+    @NestedCommand(me.CaptainElliott.Commands.Modules.Version.class)// All commands will get passed on to Commands.class
+    public static void verson(final CommandContext args, CommandSender sender) throws CommandException {
         Player player = (Player) sender;
         if(!getInit())
             player.sendMessage(ChatColor.RED + "You have not yet initialized! (/xml init)");
     }
 
-    @Command(aliases = { "add" }, desc = "add a XML Moduel with more than one element (teams, fillers)", min = 0, max = -1)
-    @NestedCommand(ModulesAdd.class)// All commands will get passed on to Commands.class
-    public static void add(final CommandContext args, CommandSender sender) throws CommandException {
+    @Command(aliases = { "objective" }, desc = "commands for the objective module", min = 0, max = -1)
+    @NestedCommand(me.CaptainElliott.Commands.Modules.Objective.class)// All commands will get passed on to Commands.class
+    public static void objective(final CommandContext args, CommandSender sender) throws CommandException {
         Player player = (Player) sender;
         if(!getInit())
             player.sendMessage(ChatColor.RED + "You have not yet initialized! (/xml init)");
     }
 
+    @Command(aliases = { "teams" }, desc = "commands for the objective module", min = 0, max = -1)
+    @NestedCommand(me.CaptainElliott.Commands.Modules.Teams.class)// All commands will get passed on to Commands.class
+    public static void teams(final CommandContext args, CommandSender sender) throws CommandException {
+        Player player = (Player) sender;
+        if(!getInit())
+            player.sendMessage(ChatColor.RED + "You have not yet initialized! (/xml init)");
+    }
 
-	 
 	 public static void setInit(boolean i){
 		 init = i;
 		}
