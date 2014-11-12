@@ -16,12 +16,12 @@ So far you can generate an xml file with the following modules
 Modules that are WIP
 ====================
 
-When these are completed a beta version will be released
+When these are completed a beta version will be released. 
+Working on newer modules.
 
 - Kits
 - Spawns
-- Gamemodes
-
+- Gamemodes 
 
 Commands
 ========
